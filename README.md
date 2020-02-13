@@ -1,2 +1,2 @@
 # locke-and-key
-Implementing Concurrent and Parallel Collections in Java
+Starting out, Learning and beginning to implement Concurrent and Parallel stuctures in Java
