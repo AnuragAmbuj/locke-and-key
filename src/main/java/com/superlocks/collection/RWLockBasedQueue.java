@@ -1,7 +1,7 @@
-package com.freecharge.mob.collection;
+package com.superlocks.collection;
 
-import com.freecharge.mob.exception.QueueEmptyException;
-import com.freecharge.mob.exception.QueueFullException;
+import com.superlocks.exception.QueueEmptyException;
+import com.superlocks.exception.QueueFullException;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 

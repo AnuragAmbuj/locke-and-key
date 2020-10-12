@@ -1,4 +1,4 @@
-package com.freecharge.mob.locks;
+package com.superlocks.locks;
 
 import com.sun.codemodel.internal.JForEach;
 

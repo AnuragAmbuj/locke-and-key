@@ -1,13 +1,13 @@
-package com.freecharge.mob.exception;
+package com.superlocks.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueueEmptyException extends Exception {
+public class QueueFullException extends Exception {
 
-    private String message = "Queue is empty";
+    private String message = "Queue is full";
 
     @Override
     public String getMessage(){
