@@ -1,7 +1,5 @@
 package com.superlocks.locks;
 
-import com.sun.codemodel.internal.JForEach;
-
 import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
