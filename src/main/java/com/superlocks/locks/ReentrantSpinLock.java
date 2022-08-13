@@ -11,7 +11,7 @@ import java.util.concurrent.locks.Lock;
  */
 public class ReentrantSpinLock implements Lock {
 
-    private Sync sync;
+    private final Sync sync;
     private final AtomicBoolean state = new AtomicBoolean(false);
 
     public ReentrantSpinLock(boolean isFair){
@@ -74,6 +74,7 @@ public class ReentrantSpinLock implements Lock {
             return false;
         }
 
+        @Override
         protected final boolean tryRelease(int releases) {
             int c = getState() - releases;
             if (Thread.currentThread() != getExclusiveOwnerThread())
@@ -87,6 +88,7 @@ public class ReentrantSpinLock implements Lock {
             return free;
         }
 
+        @Override
         protected final boolean isHeldExclusively() {
             return getExclusiveOwnerThread() == Thread.currentThread();
         }
@@ -114,14 +116,15 @@ public class ReentrantSpinLock implements Lock {
         }
 
         static final class NonFairSync extends Sync {
-            final void lock() {
+            void lock() {
                 if (compareAndSetState(0, 1))
                     setExclusiveOwnerThread(Thread.currentThread());
                 else
                     acquire(1);
             }
 
-            protected final boolean tryAcquire(int acquires) {
+            @Override
+            protected boolean tryAcquire(int acquires) {
                 return nonfairTryAcquire(acquires);
             }
         }
@@ -131,7 +134,9 @@ public class ReentrantSpinLock implements Lock {
             final void lock() {
                 acquire(1);
             }
-            protected final boolean tryAcquire(int acquires) {
+
+            @Override
+            protected boolean tryAcquire(int acquires) {
                 final Thread current = Thread.currentThread();
                 int c = getState();
                 if (c == 0) {

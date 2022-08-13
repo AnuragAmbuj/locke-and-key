@@ -6,8 +6,6 @@ package com.superlocks.registers;
  */
 public class AtomicSingleReadSingleWriteRegister<T> implements Register<T> {
 
-
-
     @Override
     public T read() {
         return null;
